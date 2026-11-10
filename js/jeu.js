@@ -109,7 +109,8 @@ function corpsCarte(num) {
 function ouvrirCarte(num) {
   const c = D.CARTES[num], g = $("carte-grande");
   g.className = "carte-grande type-" + c.type;
-  g.innerHTML = `<span class="carte-num">${num}</span><h3>${c.nom}</h3><div class="carte-corps">${corpsCarte(num)}</div><div class="carte-actions"><button id="c-combiner">Combiner</button><button id="c-fermer" class="plein">Fermer</button></div>`;
+  const illu = (window.__IMAGES || []).includes("k-" + num) ? `<img class="carte-illu" src="img/k-${num}.jpg" alt="">` : "";
+  g.innerHTML = `<span class="carte-num">${num}</span>${illu}<h3>${c.nom}</h3><div class="carte-corps">${corpsCarte(num)}</div><div class="carte-actions"><button id="c-combiner">Combiner</button><button id="c-fermer" class="plein">Fermer</button></div>`;
   $("c-fermer").onclick = () => calque("carte", false);
   $("c-combiner").onclick = () => { combine = num; calque("carte", false); rendreMain(); bulle(`Touche une autre carte pour y glisser « ${c.nom} ».`); };
   const e = g.querySelector("[data-ecoute]"); if (e) e.onclick = () => son.gemir(c.zombie);
