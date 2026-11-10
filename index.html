@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Minuit Fuchsia</title>
+<meta name="description" content="Escape game gothique : la nuit des 1 600 ans de Draculaura. Un écran, un téléphone, seul ou à plusieurs, environ 1 h 30. Jeu de fan, non officiel.">
+<meta name="theme-color" content="#0b0710">
+<link rel="icon" href="img/icone.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/polices.css?v=1">
+<link rel="stylesheet" href="css/jeu.css?v=1">
+<link rel="stylesheet" href="css/tel.css?v=1">
+</head>
+<body class="sur-titre">
+
+<!-- ——— Titre -->
+<section id="titre" class="ecran actif">
+  <div class="fond" id="titre-fond"></div><div class="voile"></div><svg class="toile hg" viewBox="0 0 200 200" aria-hidden="true"><path d="M0 0L200 60M0 0L160 130M0 0L100 180M0 0L40 200M52 15Q48 38 26 50M104 31Q92 76 50 98M156 47Q136 112 76 146M196 59Q176 150 98 190"/></svg><svg class="toile hd" viewBox="0 0 200 200" aria-hidden="true"><path d="M0 0L200 60M0 0L160 130M0 0L100 180M0 0L40 200M52 15Q48 38 26 50M104 31Q92 76 50 98M156 47Q136 112 76 146M196 59Q176 150 98 190"/></svg><svg class="chauves" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g transform="translate(330 250) scale(2.2)"><path d="M0 8Q-12-8-26-4Q-22 2-24 10Q-16 6-10 12Q-6 8 0 14Q6 8 10 12Q16 6 24 10Q22 2 26-4Q12-8 0 8ZM-4 6l-2-8 4 4ZM4 6l2-8-4 4Z"/></g><g transform="translate(1260 190) scale(1.5)"><path d="M0 8Q-12-8-26-4Q-22 2-24 10Q-16 6-10 12Q-6 8 0 14Q6 8 10 12Q16 6 24 10Q22 2 26-4Q12-8 0 8ZM-4 6l-2-8 4 4ZM4 6l2-8-4 4Z"/></g><g transform="translate(1130 360) scale(1)"><path d="M0 8Q-12-8-26-4Q-22 2-24 10Q-16 6-10 12Q-6 8 0 14Q6 8 10 12Q16 6 24 10Q22 2 26-4Q12-8 0 8ZM-4 6l-2-8 4 4ZM4 6l2-8-4 4Z"/></g></svg>
+  <p class="titre-haut">Monster High · nuit du bal · 22 h 30</p>
+  <div class="titre-contenu">
+    <h1 class="titre-nom"><span>Minuit</span> <em>Fuchsia</em></h1>
+    <p class="titre-sous">Elle ne s'est jamais vue dans un miroir. Ce soir, quelqu'un l'y attend.</p>
+    <p class="titre-sur">Seul ou à plusieurs · un écran, un téléphone · environ 1 h 30</p>
+  </div>
+  <nav class="titre-menu" aria-label="Menu">
+    <button id="b-nouvelle">Nouvelle partie</button>
+    <button id="b-reprendre" hidden>Reprendre la partie</button>
+    <button id="b-comment">Comment jouer</button>
+  </nav>
+  <p class="titre-bas">Jeu de fan non officiel, sans lien avec Mattel. Monster High et ses personnages appartiennent à Mattel.</p>
+</section>
+
+<!-- ——— Mise en place -->
+<section id="mise" class="ecran">
+  <div class="mise-boite">
+    <h2>Avant d'entrer</h2>
+    <p>Le jeu se joue sur cet écran. Un téléphone sert d'<b>iCoffin</b> : le Manuel de l'élève monstrueux, et quelques instruments. Scanne le code, ou ouvre l'adresse.</p>
+    <div class="mise-lien"><div id="qr"></div><div><p class="mise-code" id="mise-code">····</p><p class="mise-url" id="mise-url"></p><p class="mise-etat" id="mise-etat">En attente d'un téléphone…</p></div></div>
+    <p class="petit">Pas de téléphone ? L'iCoffin s'ouvre aussi sur cet écran. Mets du son : il compte.</p>
+    <div class="mise-boutons"><button id="b-entrer" class="plein">Entrer dans le hall</button></div>
+  </div>
+</section>
+
+<!-- ——— Jeu -->
+<section id="jeu" class="ecran">
+  <header class="barre">
+    <div class="barre-chap"><span id="chap-num">I</span><b id="chap-titre"></b></div>
+    <p class="barre-obj" id="objectif"></p>
+    <div class="barre-droite">
+      <div class="nettete" title="Netteté du Reflet"><i id="nettete"></i></div>
+      <div class="heure"><b id="heure">22 h 30</b><span id="reste">1 h 30</span></div>
+      <button id="b-icoffin" title="iCoffin">iCoffin</button>
+      <button id="b-indice" title="Demander un indice à Comte Fabulous">Indice</button>
+      <button id="b-son" title="Son" aria-pressed="true">Son</button>
+    </div>
+  </header>
+  <main class="table">
+    <div class="scene" id="scene">
+      <div class="decor" id="decor"></div>
+      <div class="points" id="points"></div>
+      <div class="noir" id="noir"></div>
+      <div class="reflet-mot" id="reflet-mot"></div>
+      <div class="lieu-nom"><h2 id="lieu-nom"></h2><p id="lieu-texte"></p></div>
+    </div>
+    <nav class="sorties" id="sorties" aria-label="Aller ailleurs"></nav>
+  </main>
+  <footer class="main" id="main" aria-label="Tes cartes"></footer>
+  <div class="bulle" id="bulle" role="status"></div>
+</section>
+
+<!-- ——— Calques -->
+<div class="calque" id="carton"><div class="carton-boite"><p class="carton-num" id="carton-num"></p><h2 id="carton-titre"></h2><p id="carton-texte"></p><p class="carton-obj" id="carton-obj"></p><button class="plein" id="carton-ok">Continuer</button></div></div>
+<div class="calque" id="carte"><div class="carte-grande" id="carte-grande"></div></div>
+<div class="calque" id="meca"><div class="meca-boite"><button class="fermer" id="meca-fermer" aria-label="Fermer">×</button><h2 id="meca-titre"></h2><p class="meca-texte" id="meca-texte"></p><div id="meca-corps"></div><p class="meca-retour" id="meca-retour"></p></div></div>
+<div class="calque" id="icoffin"><div class="icoffin-boite"><button class="fermer" id="icoffin-fermer" aria-label="Fermer">×</button><div id="icoffin-corps" class="tel"></div></div></div>
+<div class="calque" id="indice"><div class="meca-boite etroit"><button class="fermer" id="indice-fermer" aria-label="Fermer">×</button><h2>Comte Fabulous</h2><p class="meca-texte">Il sait des choses. Chaque indice coûte deux minutes.</p><div id="indice-corps"></div></div></div>
+<div class="calque" id="comment"><div class="meca-boite etroit"><button class="fermer" id="comment-fermer" aria-label="Fermer">×</button><h2>Comment jouer</h2>
+  <ul class="regles">
+    <li><b>La bougie.</b> Tout est dans le noir. Promène la flamme (souris ou doigt) : les numéros cachés n'apparaissent que dans sa lueur. Touche un numéro pour prendre la carte.</li>
+    <li><b>Les cartes.</b> Elles s'alignent en bas. Touche-en une pour la lire. « Combiner » puis une autre carte pour les glisser l'une sur l'autre.</li>
+    <li><b>Les mécanismes.</b> Cadenas, tableaux, orgue : ils s'ouvrent en grand. Une erreur rend le Reflet plus net.</li>
+    <li><b>L'iCoffin.</b> Le Manuel de l'école, sur ton téléphone. Certains chapitres demandent un mot de passe, caché dans le jeu. Celui qui tient le téléphone lit à voix haute.</li>
+    <li><b>Le Reflet.</b> Quand elle te regarde : ne bouge plus. Ni souris, ni doigt, et le téléphone face contre la table.</li>
+    <li><b>Minuit.</b> Tu as 1 h 30. Les indices coûtent deux minutes.</li>
+  </ul></div></div>
+<div class="calque sombre" id="alerte"><div class="alerte-boite"><div class="alerte-miroir"><span id="alerte-mot"></span></div><p id="alerte-texte"></p><div class="alerte-jauge"><i id="alerte-jauge"></i></div></div></div>
+<div class="calque sombre" id="fin"><div class="fin-boite"><p class="carton-num">Fin</p><h2 id="fin-titre"></h2><div id="fin-texte"></div><div id="fin-bilan" class="fin-bilan"></div><p class="fin-dedicace" id="fin-dedicace"></p><button class="plein" id="fin-rejouer">Retour au titre</button></div></div>
+
+<script src="js/lib/peerjs.min.js"></script>
+<script src="js/lib/qrcode.min.js"></script>
+<script src="js/medias.js?v=1"></script>
+<script src="js/donnees.js?v=1"></script>
+<script src="js/grimoire.js?v=1"></script>
+<script src="js/outils.js?v=1"></script>
+<script src="js/son.js?v=1"></script>
+<script src="js/decors.js?v=1"></script>
+<script src="js/icoffin.js?v=1"></script>
+<script src="js/mecas.js?v=1"></script>
+<script type="module" src="js/jeu.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>iCoffin · Minuit Fuchsia</title>
+<meta name="theme-color" content="#0b0710">
+<link rel="icon" href="img/icone.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/polices.css?v=1">
+<link rel="stylesheet" href="css/jeu.css?v=1">
+<link rel="stylesheet" href="css/tel.css?v=1">
+</head>
+<body class="telephone">
+<div class="tel-etat" id="etat"><span><i></i><span id="etat-texte">Recherche de l'écran…</span></span><div class="tel-jauge" style="width:5rem" title="Netteté du Reflet"><i id="nettete"></i></div></div>
+<main class="tel" id="manuel"></main>
+
+<div class="tel-plein ouvert" id="accueil"><h2>iCoffin</h2><p>Le téléphone de Draculaura. Garde cette page ouverte pendant toute la partie.</p><p class="petit">Il te servira à lire le Manuel, à te cacher du Reflet, à guider une chauve-souris et à souffler des bougies.</p><button class="plein" id="b-activer">Allumer l'iCoffin</button></div>
+<div class="tel-plein" id="casier"><h2>Pas encore</h2><p>Cet iCoffin est resté dans un casier. Trouve-le d'abord, sur le grand écran.</p></div>
+<div class="tel-plein" id="cache"><h2>Elle te regarde.</h2><p>Retourne l'iCoffin face contre la table. Ne bouge plus.</p><button id="b-cache" class="tel-gros" hidden>Garder le doigt ici</button></div>
+<div class="tel-plein" id="bat"><h2>Comte Fabulous</h2><p>Pose le téléphone à plat et penche-le pour le guider. Ou les flèches.</p>
+  <div class="tel-croix"><span></span><button data-d="N">▲</button><span></span><button data-d="O">◀</button><button data-d="S">▼</button><button data-d="E">▶</button></div>
+  <button class="tel-gros" id="b-cri">Crier</button><label class="petit"><input type="checkbox" id="c-penche" checked> Guider en penchant</label></div>
+<div class="tel-plein" id="souffle"><h2>Les bougies</h2><p>Approche l'iCoffin de ta bouche et souffle.</p><button class="tel-gros" id="b-micro">Ouvrir le micro</button><button id="b-souffle">Ou maintenir ici</button></div>
+<div class="tel-plein" id="fin"><h2>Minuit</h2><p>Regarde le grand écran.</p></div>
+
+<script src="js/lib/peerjs.min.js"></script>
+<script src="js/grimoire.js?v=1"></script>
+<script src="js/outils.js?v=1"></script>
+<script src="js/icoffin.js?v=1"></script>
+<script type="module" src="js/tel.js?v=1"></script>
+</body>
+</html>

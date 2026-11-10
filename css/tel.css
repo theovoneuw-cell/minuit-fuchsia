@@ -1,0 +1,31 @@
+/* L'iCoffin : téléphone compagnon et panneau sur l'écran. */
+.tel-tete { display: flex; flex-direction: column; padding: 0 .4rem .9rem; border-bottom: 2px dashed rgba(255, 140, 198, .45); margin-bottom: .8rem; }
+.tel-tete b { font: 400 2rem/1 var(--titre); color: var(--fuchsia); } .tel-tete span { font-size: .8rem; opacity: .7; }
+.tel-liste { display: grid; gap: .5rem; }
+.tel-chapitre { border: 1px solid rgba(201, 211, 230, .25); border-radius: 14px; background: rgba(11, 7, 16, .5); overflow: hidden; }
+.tel-chapitre summary { padding: .8rem 1rem; cursor: pointer; font: 400 1.15rem var(--titre); display: flex; justify-content: space-between; gap: 1rem; list-style: none; }
+.tel-chapitre summary::-webkit-details-marker { display: none; }
+.tel-chapitre summary i { font: 400 .7rem var(--texte); color: var(--bougie); border: 1px solid var(--bougie); border-radius: 999px; padding: .1em .7em; align-self: center; }
+.tel-chapitre.ferme summary { opacity: .75; }
+.tel-page { padding: 0 1rem 1rem; display: grid; gap: .7rem; font-size: .95rem; }
+.tel-page h4 { font: 400 1.1rem var(--titre); color: var(--rose); margin-top: .3rem; }
+.tel-page .saisie { width: 100%; font-size: 1.2rem; }
+.tel-page ul { padding-left: 1.1rem; display: grid; gap: .4rem; }
+table.polybe, table.tableau { border-collapse: collapse; width: 100%; text-align: center; }
+table.polybe td, table.polybe th, table.tableau td, table.tableau th { border: 1px solid rgba(201, 211, 230, .25); padding: .45em .2em; }
+table.polybe th { color: var(--vert); font: 700 1rem var(--main); } table.polybe td { font: 600 1.15rem var(--chic); }
+table.tableau td { font: 600 1.15rem var(--chic); } table.tableau th { font-weight: 600; font-size: .8rem; border-width: 1px; border-style: solid; }
+.compte { font: 600 1.5rem var(--chic); display: flex; align-items: center; gap: .5rem; justify-content: center; }
+
+/* ——— Page du téléphone */
+body.telephone { overflow: auto; min-height: 100%; background: radial-gradient(ellipse at top, var(--prune), var(--encre) 70%) fixed; }
+.tel { max-width: 30rem; margin: 0 auto; padding: 1.2rem 1rem 3rem; }
+.tel-etat { position: sticky; top: 0; z-index: 4; display: flex; justify-content: space-between; align-items: center; gap: .6rem; padding: .5rem 1rem; font-size: .75rem; background: var(--encre); border-bottom: 3px solid var(--fuchsia); }
+.tel-etat i { width: .6rem; height: .6rem; border-radius: 50%; background: var(--bougie); display: inline-block; margin-right: .4rem; } .tel-etat.ok i { background: var(--vert); }
+.tel-plein { position: fixed; inset: 0; z-index: 10; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 1.2rem; text-align: center; padding: 2rem; background: var(--encre); }
+.tel-plein.ouvert { display: flex; }
+.tel-plein h2 { font: 400 2.2rem/1.05 var(--titre); color: var(--fuchsia); } .tel-plein p { max-width: 22rem; }
+#cache { background: #000; } #cache h2 { color: var(--argent); } #cache.bas { opacity: .05; }
+.tel-croix { display: grid; grid-template-columns: repeat(3, 4.4rem); gap: .4rem; } .tel-croix button { padding: 1rem 0; border-radius: 14px; font-size: 1.3rem; }
+.tel-gros { width: 11rem; height: 11rem; border-radius: 50%; font: 400 1.4rem var(--titre); background: rgba(124, 255, 178, .12); border: 3px solid var(--vert); }
+.tel-jauge { width: 80%; height: 8px; border-radius: 4px; background: rgba(201, 211, 230, .16); overflow: hidden; } .tel-jauge i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--argent), var(--fuchsia)); transition: width .5s; }
