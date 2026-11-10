@@ -67,9 +67,9 @@ button[hidden] { display: none; }
 @keyframes bat { 50% { opacity: .45; } }
 
 .table { flex: 1; min-height: 0; display: flex; flex-direction: column; }
-.scene { position: relative; flex: 1; min-height: 0; overflow: hidden; --bx: 50%; --by: 55%; cursor: none; touch-action: none; }
-.decor { position: absolute; inset: 0; background-size: cover; background-position: center; }
-.points { position: absolute; inset: 0; }
+.scene { position: relative; flex: 1; min-height: 0; overflow: hidden; container-type: size; --bx: 50%; --by: 55%; cursor: none; touch-action: none; }
+/* Décor et points partagent le même cadre 16:9 « cover » : un numéro reste sur son objet quelle que soit la taille de l'écran. */
+.decor, .points { position: absolute; left: 50%; top: 50%; width: max(100cqw, 177.78cqh); height: max(100cqh, 56.25cqw); transform: translate(-50%, -50%); background-size: cover; background-position: center; }
 .point { position: absolute; transform: translate(-50%, -50%); cursor: none; }
 .point.numero { width: 2.3rem; height: 2.3rem; padding: 0; border-radius: 50%; background: var(--poudre); color: var(--encre); border: 2px solid var(--fuchsia); font: 700 1rem var(--titre); box-shadow: 0 0 0 4px rgba(11, 7, 16, .5), 0 0 22px rgba(255, 179, 71, .6); }
 .point.mecanisme { border: 0; padding: 0; display: flex; flex-direction: column; align-items: center; gap: .3rem; background: none; }

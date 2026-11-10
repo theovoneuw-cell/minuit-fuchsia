@@ -69,13 +69,18 @@ function prendre(num) {
 
 // ——— La bougie : la lueur suit la souris ou le doigt ; les numéros ne se voient et ne se touchent que dedans.
 let bx = 50, by = 55;
+// Les points sont placés en % de l'image (#points a le cadrage « cover » du décor) ; la lueur, elle, en % de la scène.
 function bougieVers(e) {
   const r = $("scene").getBoundingClientRect();
   bx = (e.clientX - r.left) / r.width * 100; by = (e.clientY - r.top) / r.height * 100;
   $("scene").style.setProperty("--bx", bx + "%"); $("scene").style.setProperty("--by", by + "%");
-  if (Q.has("regle") && e.type === "click") console.log(`x: ${bx.toFixed(0)}, y: ${by.toFixed(0)}`), bulle(`x: ${bx.toFixed(0)}, y: ${by.toFixed(0)}`);
+  if (Q.has("regle") && e.type === "click") { const i = $("points").getBoundingClientRect(), ix = (e.clientX - i.left) / i.width * 100, iy = (e.clientY - i.top) / i.height * 100; console.log(`x: ${ix.toFixed(0)}, y: ${iy.toFixed(0)}`); bulle(`x: ${ix.toFixed(0)}, y: ${iy.toFixed(0)}`); }
 }
-function dansLaLueur(x, y) { const r = $("scene").getBoundingClientRect(), dx = (x - bx) * r.width / 100, dy = (y - by) * r.height / 100; return Math.hypot(dx, dy) < r.width * (r.width < 760 ? .26 : .13); }
+function dansLaLueur(x, y) {
+  const r = $("scene").getBoundingClientRect(), i = $("points").getBoundingClientRect();
+  const dx = i.left + x / 100 * i.width - (r.left + bx / 100 * r.width), dy = i.top + y / 100 * i.height - (r.top + by / 100 * r.height);
+  return Math.hypot(dx, dy) < r.width * (r.width < 760 ? .26 : .13);
+}
 
 // ——————————————————————————————————————————————— La main
 const PICTO = { objet: "◆", document: "❧", eclat: "✦" };
